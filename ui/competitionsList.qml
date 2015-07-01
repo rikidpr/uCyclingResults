@@ -28,15 +28,20 @@ Page{
 
     ActivityIndicator {
         id: activityIndicator
-        anchors.fill: parent
-        runing:true;
+        anchors{
+            horizontalCenter: parent.horizontalCenter;
+            verticalCenter: parent.verticalCenter;
+        }
+        width: units.gu(6);
+        height: units.gu(6);
+        running:true;
         opacity: 1;
     }
 
     Item{
         id:competitionsItem
         anchors.fill: parent;
-        opcatity: 0;
+        opacity: 0;
 
         WorkerScript {
             id: competitionsWorker
