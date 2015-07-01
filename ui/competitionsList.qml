@@ -112,10 +112,11 @@ Page{
                     right: parent.right
                 }
                 height: 25
-                Text {
+                Label {
                     id:txtDate
                     text: SF.formatDate(initDate);
-                    width: 75
+                    fontSize:"small"
+                    width: units.gu(15)
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
@@ -123,18 +124,19 @@ Page{
                         margins: 3
                     }
                 }
-                Text {
+                Label {
                     id:txtName
                     text: name
-                    width: 150
+                    fontSize: "small"
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
                         left: txtDate.right
+                        right: parent.right
                         margins: 3
                     }
                 }
-                Text {
+                /*Text {
                     id:txtCompType
                     text: SF.getCompetitionTypeName(competitionType);
                     width: 75
@@ -156,7 +158,7 @@ Page{
                         right: parent.right
                         margins: 3
                     }
-                }
+                }*/
                MouseArea {
                     anchors.fill: parent
                     onClicked: {
