@@ -17,10 +17,12 @@ Page {
             fill: parent
         }
         Button {
+            id: btnLast
             objectName: "button"
             width: parent.width
+            height: units.gu(20)
 
-            text: i18n.tr("Last month")
+            text: i18n.tr("Last month Competitions")
 
             onClicked: {
                 console.log("");
@@ -43,19 +45,27 @@ Page {
                                );
             }
         }
+
+
         DatePicker {
             id:datePicker
+            //width: parent.width
             mode: "Years|Months"
+            minimum: {
+                var d = new Date();
+                d.setFullYear(1900);
+                return d;
+            }
+            maximum: new Date();
         }
 
         Button {
             objectName: "button"
             width: parent.width
 
-            text: i18n.tr("Resultados 2013")
+            text: i18n.tr("Select month competitions")
 
             onClicked: {
-                console.log("vamos p'alli");
                 var initDate = Qt.formatDate(datePicker.date, "yyyyMM")+"01";
                 var finishDate =Qt.formatDate(datePicker.date, "yyyyMM")+"31";
                 pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
