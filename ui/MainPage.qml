@@ -1,9 +1,8 @@
 import QtQuick 2.0
-import Ubuntu.Components 1.1
+import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
-import QtLocation 5.0
-import QtPositioning 5.2
 import QtQuick.XmlListModel 2.0
+import Ubuntu.Components.Pickers 1.0
 
 
 Page {
@@ -44,6 +43,10 @@ Page {
                                );
             }
         }
+        DatePicker {
+            id:datePicker
+            mode: "Years|Months"
+        }
 
         Button {
             objectName: "button"
@@ -53,10 +56,12 @@ Page {
 
             onClicked: {
                 console.log("vamos p'alli");
+                var initDate = Qt.formatDate(datePicker.date, "yyyyMM")+"01";
+                var finishDate =Qt.formatDate(datePicker.date, "yyyyMM")+"31";
                 pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
                                    {
-                                           "initDate":"20130101",
-                                           "finishDate":"20131231",
+                                           "initDate":initDate,
+                                           "finishDate":finishDate,
                                            "genderID":"1",
                                            "classID":"1",
                                            "classificationType":"UWT"}
