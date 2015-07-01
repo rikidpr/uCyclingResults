@@ -47,6 +47,27 @@ Page {
         }
 
 
+        Button {
+            objectName: "button"
+            width: parent.width
+
+            text: i18n.tr("Select month competitions")
+
+            onClicked: {
+                var initDate = Qt.formatDate(datePicker.date, "yyyyMM")+"01";
+                var finishDate =Qt.formatDate(datePicker.date, "yyyyMM")+"31";
+                var uciClass = uciClassModel.get(competitionClassSelect.selectedIndex).name;
+                pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
+                                   {
+                                           "initDate":initDate,
+                                           "finishDate":finishDate,
+                                           "genderID":"1",
+                                           "classID":"1",
+                                           "classificationType":uciClass}
+                               );
+            }
+        }
+
         DatePicker {
             id:datePicker
             //width: parent.width
@@ -78,35 +99,14 @@ Page {
             selectedIndex: 0
             delegate: OptionSelectorDelegate {
                 text: name
-                subText: description
             }
             model: uciClassModel
             containerHeight: units.gu(20)
             width: parent.width
-            height: units.gu(4)
+            height: units.gu(2)
         }
 
 
-        Button {
-            objectName: "button"
-            width: parent.width
-
-            text: i18n.tr("Select month competitions")
-
-            onClicked: {
-                var initDate = Qt.formatDate(datePicker.date, "yyyyMM")+"01";
-                var finishDate =Qt.formatDate(datePicker.date, "yyyyMM")+"31";
-                var uciClass = uciClassModel.get(competitionClassSelect.selectedIndex).name;
-                pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
-                                   {
-                                           "initDate":initDate,
-                                           "finishDate":finishDate,
-                                           "genderID":"1",
-                                           "classID":"1",
-                                           "classificationType":"ALL"}
-                               );
-            }
-        }
     }
 
 
