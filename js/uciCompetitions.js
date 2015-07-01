@@ -4,10 +4,10 @@ WorkerScript.onMessage = function(sentMessage) {
     var competitions;
     //segun lo que llegue en el mensaje de fecha, genero, clase... una url u otra, de momento a piñon pa pruebas
     //sentMessage.genderID, setnMessage.classID...
-    var baseUrl = "http://localhost:8282/rest/competitions/query/";
+    var baseUrl = "http://10.0.2.2:8282/rest/competitions/query/";
     var url = baseUrl+sentMessage.initDate+","+sentMessage.finishDate+","+
             sentMessage.genderID+","+sentMessage.classID+","+sentMessage.classificationType;
-
+    console.log(url);
     xmlHttp.open("GET", url, true);
     xmlHttp.send(null);
     console.log("nos disponemos a leer el json");

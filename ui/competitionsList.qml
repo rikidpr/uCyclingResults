@@ -4,39 +4,15 @@ import Ubuntu.Components 1.2
 Page{
     id:favoritesPage
     title: i18n.tr("Competitions List")
+    property string initDate;
+    property string finishDate
+    property string genderID;
+    property string classID;
+    property string classificationType;
+
     Item{
         id:competitionsItem
         anchors.fill: parent;
-        property string initDate;
-        property string finishDate
-        property string genderID;
-        property string classID;
-        property string classificationType;
-
-        Component.onCompleted: {
-            console.log("vamos a ello");
-            competitionsWorker.sendMessage({
-                "initDate":initDate,
-                "finishDate":finishDate,
-                "genderID":genderID,
-                "classID":classID,
-                "classificationType":classificationType})
-        }
-
-        function formatDate(timestamp){
-            var date = new Date(timestamp);
-            var mes = date.getMonth()+1;
-            var dateFormatted = date.getDate()+"/"+mes+"/"+date.getFullYear()
-            return dateFormatted;
-        }
-
-        function getCompetitionTypeName(competitionType){
-            switch(competitionType){
-            case "ONE_DAY": return "One day comp.";
-            case "STAGES": return "Stages comp.";
-            default: return competitionType;
-            }
-        }
 
         WorkerScript {
             id: competitionsWorker
@@ -65,6 +41,31 @@ Page{
                                         "competitionID":comp.competitionID});
                 }
 
+            }
+        }
+
+        Component.onCompleted: {
+            console.log("vamos a ello");
+            competitionsWorker.sendMessage({
+                "initDate":initDate,
+                "finishDate":finishDate,
+                "genderID":genderID,
+                "classID":classID,
+                "classificationType":classificationType})
+        }
+
+        function formatDate(timestamp){
+            var date = new Date(timestamp);
+            var mes = date.getMonth()+1;
+            var dateFormatted = date.getDate()+"/"+mes+"/"+date.getFullYear()
+            return dateFormatted;
+        }
+
+        function getCompetitionTypeName(competitionType){
+            switch(competitionType){
+            case "ONE_DAY": return "One day comp.";
+            case "STAGES": return "Stages comp.";
+            default: return competitionType;
             }
         }
 

@@ -33,14 +33,14 @@ Page {
 
             onClicked: {
                 console.log("vamos p'alli");
-                pageStack.push({"item" : Qt.resolvedUrl("competitionsList.qml"),
-                                   "properties" : {
+                pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
+                                   {
                                            "initDate":"20130101",
                                            "finishDate":"20131231",
                                            "genderID":"1",
                                            "classID":"1",
                                            "classificationType":"UWT"}
-                               });
+                               );
             }
         }
     }
