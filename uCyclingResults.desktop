@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=uCyclingResults
+Exec=qmlscene $@ Main.qml
+Icon=uCyclingResults.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+
