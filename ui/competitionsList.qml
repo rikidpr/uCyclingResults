@@ -172,7 +172,7 @@ Page{
                         } else if (competitionType === 'ONE_DAY') {
                             var url = baseUrl+"results/oneDay/"
                                 +competitionID+","+eventID+","+editionID+","+genderID+","+classID;
-                            oneDayResult(competitionID,eventID,editionID,genderID,classID);
+                            oneDayResult(name, competitionID,eventID,editionID,genderID,classID);
                         }
                         console.log("url:"+url);
 

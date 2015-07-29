@@ -3,7 +3,6 @@ import Ubuntu.Components 1.2
 
 Page{
     id: classificationResultsPage;
-    title: i18n.tr("ClassificationResults");
     //parametros
     property string competitionID;
     property string eventID;
@@ -12,6 +11,9 @@ Page{
     property string classID;
     property string phase1ID;
     property string phaseClassificationID;
+    property string classificationName;
+
+    title: classificationName;
     state: "LOADING"
 
     states: [

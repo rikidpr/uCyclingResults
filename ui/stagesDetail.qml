@@ -4,7 +4,7 @@ import "../js/StringFormats.js" as SF;
 
 Page{
     id: stagesDetailPage;
-    title: i18n.tr("StageDetails");
+    title: i18n.tr("StagesTourDetail");
     //parametros
     property string competitionID;
     property string eventID;
@@ -155,9 +155,9 @@ Page{
                     anchors.fill: parent
                     onClicked: {
                         if (competitionType === 'STAGE_STAGES') {
-                            stageResult(competitionID,eventID,editionID,genderID,classID,phase1ID);
+                            stageResult(name, competitionID,eventID,editionID,genderID,classID,phase1ID);
                         } else if (competitionType === 'CLASSIFICATION_STAGES') {
-                            stagesClassification(competitionID,eventID,editionID,genderID,classID,phaseClassificationID);
+                            stagesClassification(name, competitionID,eventID,editionID,genderID,classID,phaseClassificationID);
                         }
                     }
                 }

@@ -3,13 +3,15 @@ import Ubuntu.Components 1.2
 
 Page{
     id: oneDayResultsPage;
-    title: i18n.tr("OneDayResults");
     //parameters
     property string competitionID;
     property string eventID;
     property string editionID;
     property string genderID;
     property string classID;
+    property string name;
+
+    title: name +" "+ i18n.tr("Results");
     state: "LOADING"
 
     states: [
