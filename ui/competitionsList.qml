@@ -28,15 +28,15 @@ Page{
 
     ActivityIndicator {
         id: activityIndicator
-        anchors.fill: parent
-        runing:true;
+        anchors : parent
+        running:true;
         opacity: 1;
     }
 
     Item{
         id:competitionsItem
         anchors.fill: parent;
-        opcatity: 0;
+        opacity: 0;
 
         WorkerScript {
             id: competitionsWorker

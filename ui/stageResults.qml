@@ -11,11 +11,34 @@ Page{
     property string genderID;
     property string classID;
     property string phase1ID;
+    state: "LOADING"
+
+    states: [
+        State {
+            name: "LOADING"
+            PropertyChanges {target: activityIndicator; opacity: 1}
+            PropertyChanges {target: stageResultsItem; opacity: 0}
+        },
+        State {
+            name: "LOADED"
+            PropertyChanges {target: activityIndicator; opacity: 0}
+            PropertyChanges {target: stageResultsItem; opacity: 1}
+        }
+
+    ]
+
+    ActivityIndicator {
+        id: activityIndicator
+        anchors : parent
+        running:true;
+        opacity: 1;
+    }
+
 
     Item{
         id:stageResultsItem
         anchors.fill: parent;
-
+        opacity: 1;
 
         Component.onCompleted: {
             stageResultsWorker.sendMessage({"competitionID":competitionID,
@@ -43,7 +66,7 @@ Page{
                                                   "team":result.team,
                                                   "age":result.age});
                 }
-
+                stageResultsPage.state="LOADED";
             }
         }
 

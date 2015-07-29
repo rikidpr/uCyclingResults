@@ -12,11 +12,34 @@ Page{
     property string classID;
     property string phase1ID;
     property string phaseClassificationID;
+    state: "LOADING"
+
+    states: [
+        State {
+            name: "LOADING"
+            PropertyChanges {target: activityIndicator; opacity: 1}
+            PropertyChanges {target: classificationResultsItem; opacity: 0}
+        },
+        State {
+            name: "LOADED"
+            PropertyChanges {target: activityIndicator; opacity: 0}
+            PropertyChanges {target: classificationResultsItem; opacity: 1}
+        }
+
+    ]
+
+    ActivityIndicator {
+        id: activityIndicator
+        anchors : parent
+        running:true;
+        opacity: 1;
+    }
+
 
     Item{
         id:classificationResultsItem
         anchors.fill: parent;
-
+        opacity: 0;
 
         Component.onCompleted: {
             classificationResultsWorker.sendMessage({"competitionID":competitionID,
@@ -36,7 +59,6 @@ Page{
                 console.log("recibido mensaje");
                 for (var i = 0; i < messageObject.results.length; i++) {
                     var result= messageObject.results[i];
-    //{"name":"Christopher HORNER","id":8588,"result":"84:36:04","rank":"1","nat":"USA","team":"RLT","age":"42","paR":null,"pcR":null}
                     classificationResultsModel.append({
                                                   "id": result.id,
                                                   "rank":result.rank,
@@ -46,7 +68,7 @@ Page{
                                                   "team":result.team,
                                                   "age":result.age});
                 }
-
+                classificationResultsPage.state="LOADED";
             }
         }
 

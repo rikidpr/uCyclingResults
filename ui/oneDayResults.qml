@@ -10,10 +10,33 @@ Page{
     property string editionID;
     property string genderID;
     property string classID;
+    state: "LOADING"
+
+    states: [
+        State {
+            name: "LOADING"
+            PropertyChanges {target: activityIndicator; opacity: 1}
+            PropertyChanges {target: oneDayResultsItem; opacity: 0}
+        },
+        State {
+            name: "LOADED"
+            PropertyChanges {target: activityIndicator; opacity: 0}
+            PropertyChanges {target: oneDayResultsItem; opacity: 1}
+        }
+
+    ]
+
+    ActivityIndicator {
+        id: activityIndicator
+        anchors : parent
+        running:true;
+        opacity: 1;
+    }
 
     Item{
         id:oneDayResultsItem
         anchors.fill: parent;
+        opacity: 0;
 
 
         Component.onCompleted: {
@@ -44,7 +67,7 @@ Page{
                                                   "team":result.team,
                                                   "age":result.age});
                 }
-
+                oneDayResultsPage.state="LOADED";
             }
         }
 
