@@ -77,7 +77,7 @@ Page{
                                         "eventPhaseID":comp.eventPhaseID,
                                         "competitionType":comp.competitionType,
                                         "competitionID":comp.competitionID,
-                                        "winner":comp.winner});
+                                        "winner":typeof(comp.winner) === 'undefined' ? '' : comp.winner});
                 }
                 stagesDetailPage.state="LOADED";
             }
