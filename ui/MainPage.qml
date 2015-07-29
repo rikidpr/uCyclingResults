@@ -30,9 +30,9 @@ Page {
                 var year = cTime.getFullYear();
                 var month = cTime.getMonth()+1;
                 var date = cTime.getDate();
-                var initDate = ""+year+(month<10 ? "0"+month : monht)+(date<10 ? "0"+date : date);
-                month = month -1;
                 var finishDate = ""+year+(month<10 ? "0"+month : monht)+(date<10 ? "0"+date : date);
+                month = month -1;
+                var initDate = ""+year+(month<10 ? "0"+month : monht)+(date<10 ? "0"+date : date);
 
                 pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
                                    {
