@@ -10,10 +10,33 @@ Page{
     property string genderID;
     property string classID;
     property string classificationType;
+    state: "LOADING"
+
+    states: [
+        State {
+            name: "LOADING"
+            PropertyChanges {target: activityIndicator; opacity: 1}
+            PropertyChanges {target: competitionsItem; opacity: 0}
+        },
+        State {
+            name: "LOADED"
+            PropertyChanges {target: activityIndicator; opacity: 0}
+            PropertyChanges {target: competitionsItem; opacity: 1}
+        }
+
+    ]
+
+    ActivityIndicator {
+        id: activityIndicator
+        anchors.fill: parent
+        runing:true;
+        opacity: 1;
+    }
 
     Item{
         id:competitionsItem
         anchors.fill: parent;
+        opcatity: 0;
 
         WorkerScript {
             id: competitionsWorker
@@ -41,7 +64,7 @@ Page{
                                         "competitionType":comp.competitionType,
                                         "competitionID":comp.competitionID});
                 }
-
+                competitionsListPage.state="LOADED";
             }
         }
 
