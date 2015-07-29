@@ -38,7 +38,7 @@ MainView {
     ///////////////////////////////////
         function stagesCompDetail(competitionID,eventID,editionID,genderID,classID){
             console.log(competitionID+","+eventID+","+editionID+","+genderID+","+classID);
-            pageStack.push(Qt.resolvedUrl("stagesDetail.qml"),
+            pageStack.push(Qt.resolvedUrl("ui/stagesDetail.qml"),
                            {"competitionID":competitionID,
                                    "eventID":eventID,
                                    "editionID":editionID,
@@ -47,7 +47,7 @@ MainView {
         }
 
         function oneDayResult(competitionID,eventID,editionID,genderID,classID){
-            pageStack.push(Qt.resolvedUrl("oneDayResults.qml"),
+            pageStack.push(Qt.resolvedUrl("ui/oneDayResults.qml"),
                                {"competitionID":competitionID,
                                    "eventID":eventID,
                                    "editionID":editionID,
@@ -57,7 +57,7 @@ MainView {
 
         //http://localhost:8282/rest/results/stage/20695,12146,810688,1,1,837675
         function stageResult(competitionID,eventID,editionID,genderID,classID,phase1ID){
-            pageStack.push(Qt.resolvedUrl("stageResults.qml"),
+            pageStack.push(Qt.resolvedUrl("ui/stageResults.qml"),
                                {"competitionID":competitionID,
                                    "eventID":eventID,
                                    "editionID":editionID,
@@ -68,7 +68,7 @@ MainView {
 
         //http://localhost:8282/rest/results/classification/20695,12146,810688,1,1,0,800977
         function stagesClassification(competitionID,eventID,editionID,genderID,classID,phaseClassificationID){
-            pageStack.push(Qt.resolvedUrl("classificationResults.qml"),
+            pageStack.push(Qt.resolvedUrl("ui/classificationResults.qml"),
                                {"competitionID":competitionID,
                                    "eventID":eventID,
                                    "editionID":editionID,
