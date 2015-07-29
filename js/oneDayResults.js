@@ -1,10 +1,10 @@
-.import "Contracts.js" as Contracts
+Qt.include("Contracts.js")
 
 //"results/oneDay/"
 WorkerScript.onMessage = function(sentMessage) {
     var xmlHttp = new XMLHttpRequest();
     var results;
-    var baseUrl = Contracts.cyclingResultsHost+"/rest/results/oneDay/";
+    var baseUrl = cyclingResultsHost+"/rest/results/oneDay/";
     var url = baseUrl+sentMessage.competitionID+","+sentMessage.eventID+","+
             sentMessage.editionID+","+sentMessage.genderID+","+sentMessage.classID;
 

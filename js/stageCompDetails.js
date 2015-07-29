@@ -1,4 +1,4 @@
-.import "Contracts.js" as Contracts
+Qt.include("Contracts.js")
 
 //example url:http://localhost:8282/rest/competitions/stageRaceCompetitions/20700,12146,810684,1,1
 WorkerScript.onMessage = function(sentMessage) {
@@ -6,7 +6,7 @@ WorkerScript.onMessage = function(sentMessage) {
     var competitions;
     //segun lo que llegue en el mensaje de fecha, genero, clase... una url u otra, de momento a piñon pa pruebas
     //sentMessage.genderID, setnMessage.classID...
-    var baseUrl = Contracts.cyclingResultsHost+"/rest/competitions/stageRaceCompetitions/";
+    var baseUrl = cyclingResultsHost+"/rest/competitions/stageRaceCompetitions/";
     var url = baseUrl+sentMessage.competitionID+","+sentMessage.eventID+","+sentMessage.editionID
         +","+sentMessage.genderID+","+sentMessage.classID;
     //var url = baseUrl+"20700,12146,810684,1,1";

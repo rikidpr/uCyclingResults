@@ -1,10 +1,11 @@
-.import "Contracts.js" as Contracts
+Qt.include("Contracts.js")
+
 
 //http://localhost:8282/rest/results/stage/20695,12146,810688,1,1,837675
 WorkerScript.onMessage = function(sentMessage) {
     var xmlHttp = new XMLHttpRequest();
     var results;
-    var baseUrl = Contracts.cyclingResultsHost+"/rest/results/stage/";
+    var baseUrl = cyclingResultsHost+"/rest/results/stage/";
     var url = baseUrl+sentMessage.competitionID+","+sentMessage.eventID+","+
             sentMessage.editionID+","+sentMessage.genderID+","+sentMessage.classID
             +","+sentMessage.phase1ID;
