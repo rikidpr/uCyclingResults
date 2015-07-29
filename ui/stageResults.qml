@@ -115,7 +115,7 @@ Page{
                         top: parent.top
                         bottom: parent.bottom
                         left: parent.left
-                        margins: 3
+                        margins: units.gu(0.5)
                     }
                 }
                 Label {
@@ -127,7 +127,7 @@ Page{
                         top: parent.top
                         bottom: parent.bottom
                         left: txtRank.right
-                        margins: 3
+                        margins: units.gu(0.5)
                     }
                 }
                 Label {
@@ -139,7 +139,7 @@ Page{
                         top: parent.top
                         bottom: parent.bottom
                         left: txtName.right
-                        margins: 3
+                        margins: units.gu(0.5)
                     }
                 }
             }

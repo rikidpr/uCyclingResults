@@ -118,12 +118,12 @@ Page{
                     id:txtDate
                     text: SF.formatDate(initDate);
                     fontSize:"small"
-                    width: units.gu(15)
+                    width: units.gu(10)
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
                         left: parent.left
-                        margins: 3
+                        margins: units.gu(0.5)
                     }
                 }
                 Label {
@@ -135,7 +135,7 @@ Page{
                         bottom: parent.bottom
                         left: txtDate.right
                         right: parent.right
-                        margins: 3
+                        margins: units.gu(0.5)
                     }
                 }
                 /*Text {
@@ -146,7 +146,7 @@ Page{
                         top: parent.top
                         bottom: parent.bottom
                         left: txtName.right
-                        margins: 3
+                        margins: units.gu(0.5)
                     }
                 }
                 Text {
@@ -158,7 +158,7 @@ Page{
                         bottom: parent.bottom
                         left: txtCompType.right
                         right: parent.right
-                        margins: 3
+                        margins: units.gu(0.5)
                     }
                 }*/
                MouseArea {

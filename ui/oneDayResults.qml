@@ -110,37 +110,38 @@ Page{
                 Label {
                     id:txtRank
                     text: rank;
-                    width: units.gu(10)
+                    width: units.gu(4)
                     fontSize: "small"
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
                         left: parent.left
-                        margins: 3
+                        margins: units.gu(0.5)
                     }
                 }
                 Label {
                     id:txtName
                     text: name
-                    width: units.gu(30)
                     fontSize: "small"
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
                         left: txtRank.right
-                        margins: 3
+                        right: txtResult.left
+                        margins: units.gu(0.5)
                     }
                 }
                 Label {
                     id:txtResult
                     text: result;
-                    width: units.gu(10)
-                    fontSize: "small"
+                    width: units.gu(8)
+                    fontSize: "x-small"
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
-                        left: txtName.right
-                        margins: 3
+                        //left: txtName.right
+                        right: parent.right
+                        margins: units.gu(0.5)
                     }
                 }
             }
