@@ -17,12 +17,32 @@ Page {
             margins: units.gu(2)
             fill: parent
         }
+        Button {
+            objectName: "button"
+            width: parent.width
 
-        Label {
-            id: label
-            objectName: "label"
+            text: i18n.tr("Last month")
 
-            text: i18n.tr("Hello..")
+            onClicked: {
+                console.log("");
+
+                var cTime = new Date();
+                var year = cTime.getFullYear();
+                var month = cTime.getMonth()+1;
+                var date = cTime.getDate();
+                var initDate = ""+year+(month<10 ? "0"+month : monht)+(date<10 ? "0"+date : date);
+                month = month -1;
+                var finishDate = ""+year+(month<10 ? "0"+month : monht)+(date<10 ? "0"+date : date);
+
+                pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
+                                   {
+                                           "initDate":initDate,
+                                           "finishDate":finishDate,
+                                           "genderID":"1",
+                                           "classID":"1",
+                                           "classificationType":"ALL"}
+                               );
+            }
         }
 
         Button {

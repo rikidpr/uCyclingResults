@@ -137,7 +137,7 @@ Page{
                 Label {
                     id:txtResult
                     text: result;
-                    width: units.gu(10)
+                    width: units.gu(6)
                     fontSize: "x-small"
                     anchors {
                         top: parent.top

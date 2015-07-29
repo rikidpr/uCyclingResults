@@ -123,24 +123,24 @@ Page{
                 Label {
                     id:txtName
                     text: name
-                    width: units.gu(30)
                     fontSize: "small"
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
                         left: txtRank.right
+                        right: txtResult.left
                         margins: units.gu(0.5)
                     }
                 }
                 Label {
                     id:txtResult
                     text: result;
-                    width: units.gu(10)
-                    fontSize: "small"
+                    width: units.gu(8)
+                    fontSize: "x-small"
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
-                        left: txtName.right
+                        right: parent.right
                         margins: units.gu(0.5)
                     }
                 }
