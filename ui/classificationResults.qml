@@ -30,7 +30,12 @@ Page{
 
     ActivityIndicator {
         id: activityIndicator
-        anchors : parent
+        anchors{
+            horizontalCenter: parent.horizontalCenter;
+            verticalCenter: parent.verticalCenter;
+        }
+        width: units.gu(6);
+        height: units.gu(6);
         running:true;
         opacity: 1;
     }
