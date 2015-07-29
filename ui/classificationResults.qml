@@ -88,12 +88,14 @@ Page{
             model: classificationResultsModel
             delegate: classificationResultsDelegate
             header: Rectangle {
-                width: parent.width; height: 10;
+                width: parent.width;
+                height: units.gu(1);
                 color: "#555555"
             }
 
             footer: Rectangle {
-                width: parent.width; height: 10;
+                width: parent.width;
+                height: units.gu(1);
                 color: "#555555"
             }
         }
@@ -105,11 +107,11 @@ Page{
                     left: parent.left
                     right: parent.right
                 }
-                height: 25
+                height: units.gu(2)
                 Text {
                     id:txtRank
-                    text: rank;
-                    width: 25
+                    text: rank
+                    width: units.gu(10)
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
@@ -120,7 +122,7 @@ Page{
                 Text {
                     id:txtName
                     text: name
-                    width: 150
+                    width: units.gu(30)
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
@@ -131,7 +133,7 @@ Page{
                 Text {
                     id:txtResult
                     text: result;
-                    width: 75
+                    width: units.gu(10)
                     anchors {
                         top: parent.top
                         bottom: parent.bottom

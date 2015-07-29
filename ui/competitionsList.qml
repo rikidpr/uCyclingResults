@@ -94,12 +94,14 @@ Page{
             model: competitionsModel
             delegate: competitionsDelegate
             header: Rectangle {
-                width: parent.width; height: 10;
+                width: parent.width;
+                height: units.gu(1);
                 color: "#555555"
             }
 
             footer: Rectangle {
-                width: parent.width; height: 10;
+                width: parent.width;
+                height: units.gu(1);
                 color: "#555555"
             }
         }
@@ -111,7 +113,7 @@ Page{
                     left: parent.left
                     right: parent.right
                 }
-                height: 25
+                height: units.gu(2);
                 Label {
                     id:txtDate
                     text: SF.formatDate(initDate);

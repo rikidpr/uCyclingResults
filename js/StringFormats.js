@@ -17,3 +17,10 @@ function getCompetitionTypeName(competitionType){
     }
 }
 
+function truncate(cadena, maxLength){
+    if (cadena.length <= maxLength){
+        return cadena;
+    } else {
+        return cadena.substring(0,maxLength)+"...";
+    }
+}
