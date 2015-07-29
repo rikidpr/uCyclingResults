@@ -38,57 +38,44 @@ MainView {
     ///////////////////////////////////
         function stagesCompDetail(competitionID,eventID,editionID,genderID,classID){
             console.log(competitionID+","+eventID+","+editionID+","+genderID+","+classID);
-            mainStack.push({
-                           "item":Qt.resolvedUrl("stagesDetail.qml"),
-                           "properties": {
-                                   "competitionID":competitionID,
+            pageStack.push(Qt.resolvedUrl("stagesDetail.qml"),
+                           {"competitionID":competitionID,
                                    "eventID":eventID,
                                    "editionID":editionID,
                                    "genderID":genderID,
-                                   "classID":classID}
-                           });
+                                   "classID":classID});
         }
 
         function oneDayResult(competitionID,eventID,editionID,genderID,classID){
-            mainStack.push({
-                               "item":Qt.resolvedUrl("oneDayResults.qml"),
-                               "properties": {
-                                   "competitionID":competitionID,
+            pageStack.push(Qt.resolvedUrl("oneDayResults.qml"),
+                               {"competitionID":competitionID,
                                    "eventID":eventID,
                                    "editionID":editionID,
                                    "genderID":genderID,
-                                   "classID":classID}
-                           });
+                                   "classID":classID});
         }
 
         //http://localhost:8282/rest/results/stage/20695,12146,810688,1,1,837675
         function stageResult(competitionID,eventID,editionID,genderID,classID,phase1ID){
-            mainStack.push({
-                               "item":Qt.resolvedUrl("stageResults.qml"),
-                               "properties": {
-                                   "competitionID":competitionID,
+            pageStack.push(Qt.resolvedUrl("stageResults.qml"),
+                               {"competitionID":competitionID,
                                    "eventID":eventID,
                                    "editionID":editionID,
                                    "genderID":genderID,
                                    "classID":classID,
-                                   "phase1ID":phase1ID}
-                           });
+                                   "phase1ID":phase1ID});
         }
 
         //http://localhost:8282/rest/results/classification/20695,12146,810688,1,1,0,800977
         function stagesClassification(competitionID,eventID,editionID,genderID,classID,phaseClassificationID){
-            mainStack.push({
-                               "item":Qt.resolvedUrl("classificationResults.qml"),
-                               "properties": {
-                                   "competitionID":competitionID,
+            pageStack.push(Qt.resolvedUrl("classificationResults.qml"),
+                               {"competitionID":competitionID,
                                    "eventID":eventID,
                                    "editionID":editionID,
                                    "genderID":genderID,
                                    "classID":classID,
                                    "phase1ID":0,
-                                   "phaseClassificationID":phaseClassificationID
-                               }
-                           });
+                                   "phaseClassificationID":phaseClassificationID});
         }
 
 
