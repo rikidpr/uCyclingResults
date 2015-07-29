@@ -1,8 +1,9 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.2
+import "../js/StringFormats.js" as SF;
 
 Page{
-    id:favoritesPage
+    id:competitionsListPage
     title: i18n.tr("Competitions List")
     property string initDate;
     property string finishDate
@@ -45,7 +46,6 @@ Page{
         }
 
         Component.onCompleted: {
-            console.log("vamos a ello");
             competitionsWorker.sendMessage({
                 "initDate":initDate,
                 "finishDate":finishDate,
@@ -54,20 +54,6 @@ Page{
                 "classificationType":classificationType})
         }
 
-        function formatDate(timestamp){
-            var date = new Date(timestamp);
-            var mes = date.getMonth()+1;
-            var dateFormatted = date.getDate()+"/"+mes+"/"+date.getFullYear()
-            return dateFormatted;
-        }
-
-        function getCompetitionTypeName(competitionType){
-            switch(competitionType){
-            case "ONE_DAY": return "One day comp.";
-            case "STAGES": return "Stages comp.";
-            default: return competitionType;
-            }
-        }
 
         ListModel{
             id:competitionsModel
@@ -100,7 +86,7 @@ Page{
                 height: 25
                 Text {
                     id:txtDate
-                    text: formatDate(initDate);
+                    text: SF.formatDate(initDate);
                     width: 75
                     anchors {
                         top: parent.top
@@ -122,7 +108,7 @@ Page{
                 }
                 Text {
                     id:txtCompType
-                    text: getCompetitionTypeName(competitionType);
+                    text: SF.getCompetitionTypeName(competitionType);
                     width: 75
                     anchors {
                         top: parent.top
