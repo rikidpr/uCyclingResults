@@ -107,11 +107,12 @@ Page{
                     left: parent.left
                     right: parent.right
                 }
-                height: units.gu(2)
-                Text {
+                height: units.gu(3)
+                Label {
                     id:txtRank
                     text: rank
                     width: units.gu(10)
+                    fontSize: "small"
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
@@ -119,10 +120,11 @@ Page{
                         margins: 3
                     }
                 }
-                Text {
+                Label {
                     id:txtName
                     text: name
                     width: units.gu(30)
+                    fontSize: "small"
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
@@ -130,10 +132,11 @@ Page{
                         margins: 3
                     }
                 }
-                Text {
+                Label {
                     id:txtResult
                     text: result;
                     width: units.gu(10)
+                    fontSize: "small"
                     anchors {
                         top: parent.top
                         bottom: parent.bottom

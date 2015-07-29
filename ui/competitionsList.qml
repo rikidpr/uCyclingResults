@@ -113,7 +113,7 @@ Page{
                     left: parent.left
                     right: parent.right
                 }
-                height: units.gu(2);
+                height: units.gu(3);
                 Label {
                     id:txtDate
                     text: SF.formatDate(initDate);
