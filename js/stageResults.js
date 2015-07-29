@@ -1,8 +1,10 @@
+.import "Contracts.js" as Contracts
+
 //http://localhost:8282/rest/results/stage/20695,12146,810688,1,1,837675
 WorkerScript.onMessage = function(sentMessage) {
     var xmlHttp = new XMLHttpRequest();
     var results;
-    var baseUrl = "http://localhost:8282/rest/results/stage/";
+    var baseUrl = Contracts.cyclingResultsHost+"/rest/results/stage/";
     var url = baseUrl+sentMessage.competitionID+","+sentMessage.eventID+","+
             sentMessage.editionID+","+sentMessage.genderID+","+sentMessage.classID
             +","+sentMessage.phase1ID;

@@ -1,8 +1,10 @@
+.import "Contracts.js" as Contracts
+
 //"results/oneDay/"
 WorkerScript.onMessage = function(sentMessage) {
     var xmlHttp = new XMLHttpRequest();
     var results;
-    var baseUrl = "http://localhost:8282/rest/results/oneDay/";
+    var baseUrl = Contracts.cyclingResultsHost+"/rest/results/oneDay/";
     var url = baseUrl+sentMessage.competitionID+","+sentMessage.eventID+","+
             sentMessage.editionID+","+sentMessage.genderID+","+sentMessage.classID;
 
