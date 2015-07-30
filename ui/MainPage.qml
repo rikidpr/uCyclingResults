@@ -143,6 +143,32 @@ Page {
                                    );
                 }
             }
+            Button {
+                id: btnUwt
+                objectName: "button"
+                width: parent.width
+                height: units.gu(20)
+
+                text: i18n.tr("UCI World Tour")
+
+                onClicked: {
+                    console.log("");
+
+                    var cTime = new Date();
+                    var year = cTime.getFullYear();
+                    var finishDate = ""+year+"1231";
+                    var initDate = ""+year+"0101";
+
+                    pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
+                                       {
+                                               "initDate":initDate,
+                                               "finishDate":finishDate,
+                                               "genderID":"1",
+                                               "classID":"1",
+                                               "classificationType":"UWT"}
+                                   );
+                }
+            }
         }
     }
 
