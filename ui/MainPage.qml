@@ -74,7 +74,7 @@ Page {
                                            "finishDate":finishDate,
                                            "genderID":"1",
                                            "classID":"1",
-                                           "classificationType":"UWT"}
+                                           "classificationType":"ALL"}
                                );
             }
         }

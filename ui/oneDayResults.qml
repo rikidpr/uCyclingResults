@@ -123,7 +123,7 @@ Page{
                 }
                 Label {
                     id:txtName
-                    text: name
+                    text: name+"("+team+")"
                     fontSize: "small"
                     anchors {
                         top: parent.top
@@ -141,7 +141,6 @@ Page{
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
-                        //left: txtName.right
                         right: parent.right
                         margins: units.gu(0.5)
                     }

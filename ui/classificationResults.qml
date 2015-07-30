@@ -124,7 +124,7 @@ Page{
                 }
                 Label {
                     id:txtName
-                    text: name
+                    text: name+"("+team+")"
                     fontSize: "small"
                     anchors {
                         top: parent.top

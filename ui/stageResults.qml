@@ -111,7 +111,7 @@ Page{
                 Label {
                     id:txtRank
                     text: rank;
-                    width: units.gu(10)
+                    width: units.gu(4)
                     fontSize: "small"
                     anchors {
                         top: parent.top
@@ -122,7 +122,7 @@ Page{
                 }
                 Label {
                     id:txtName
-                    text: name
+                    text: name+"("+team+")"
                     fontSize: "small"
                     anchors {
                         top: parent.top
