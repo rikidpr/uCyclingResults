@@ -24,28 +24,24 @@ MainView {
     width: units.gu(45)
     height: units.gu(78)
 
-    head.actions: [//15.04 en adelante
-        Action {
-            id: openAbout
-            text: i18n.tr("About...")
-            iconName: "help"
-            onTriggered: pageStack.push(Qt.resolvedUrl("ui/AboutPage.qml"))
-        }
-    ]
-
     PageStack {
         id: pageStack
         Component.onCompleted: push(mainPage)
         MainPage {
             id:mainPage
         }
+
     }
 
 
     ///////////////////////////////////
     ///   JS NAVIGATION FUNCTIONS   ///
     ///////////////////////////////////
-        function stagesCompDetail(competitionID,eventID,editionID,genderID,classID){
+    function aboutPage(){
+        pageStack.push(Qt.resolvedUrl("ui/AboutPage.qml"));
+    }
+
+    function stagesCompDetail(competitionID,eventID,editionID,genderID,classID){
             console.log(competitionID+","+eventID+","+editionID+","+genderID+","+classID);
             pageStack.push(Qt.resolvedUrl("ui/stagesDetail.qml"),
                            {"competitionID":competitionID,

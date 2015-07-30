@@ -10,6 +10,15 @@ Page {
 
     title: i18n.tr("Cycling Results")
 
+    head.actions: [//15.04 en adelante
+        Action {
+            id: openAbout
+            text: i18n.tr("About...")
+            iconName: "help"
+            onTriggered: pageStack.push(Qt.resolvedUrl("ui/AboutPage.qml"))
+        }
+    ]
+
     Column {
         spacing: units.gu(1)
         anchors {
