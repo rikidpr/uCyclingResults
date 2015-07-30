@@ -24,6 +24,15 @@ MainView {
     width: units.gu(45)
     height: units.gu(78)
 
+    head.actions: [//15.04 en adelante
+        Action {
+            id: openAbout
+            text: i18n.tr("About...")
+            iconName: "help"
+            onTriggered: pageStack.push(Qt.resolvedUrl("ui/AboutPage.qml"))
+        }
+    ]
+
     PageStack {
         id: pageStack
         Component.onCompleted: push(mainPage)
