@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.2
+import "../js/StringFormats.js" as StringFormat;
 
 Page{
     id: stageResultsPage;
@@ -108,6 +109,14 @@ Page{
                     right: parent.right
                 }
                 height: units.gu(3)
+                Rectangle {
+                    anchors{
+                        left: parent.left
+                        right: parent.right
+                    }
+                    height: units.gu(3)
+                    color: StringFormat.getOneDayResultsBackgroundColor(index);
+                }
                 Label {
                     id:txtRank
                     text: rank;
@@ -122,7 +131,7 @@ Page{
                 }
                 Label {
                     id:txtName
-                    text: name+"("+team+")"
+                    text: name+" ("+team+")"
                     fontSize: "small"
                     anchors {
                         top: parent.top
@@ -131,6 +140,7 @@ Page{
                         right: txtResult.left
                         margins: units.gu(0.5)
                     }
+                    color: StringFormat.getOneDayResultsForegroundColor(index);
                 }
                 Label {
                     id:txtResult
@@ -143,6 +153,7 @@ Page{
                         right: parent.right
                         margins: units.gu(0.5)
                     }
+                    color: StringFormat.getOneDayResultsForegroundColor(index);
                 }
             }
         }

@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.2
+import "../js/StringFormats.js" as StringFormat;
 
 Page{
     id: classificationResultsPage;
@@ -110,6 +111,14 @@ Page{
                     right: parent.right
                 }
                 height: units.gu(3)
+                Rectangle {
+                    anchors{
+                        left: parent.left
+                        right: parent.right
+                    }
+                    height: units.gu(3)
+                    color: StringFormat.getClassificationBackgroundColor(index);
+                }
                 Label {
                     id:txtRank
                     text: rank
@@ -121,6 +130,7 @@ Page{
                         left: parent.left
                         margins: units.gu(0.5)
                     }
+                    color: StringFormat.getClassificationForegroundColor(index);
                 }
                 Label {
                     id:txtName
@@ -133,6 +143,7 @@ Page{
                         right: txtResult.left
                         margins: units.gu(0.5)
                     }
+                    color: StringFormat.getClassificationForegroundColor(index);
                 }
                 Label {
                     id:txtResult
@@ -145,6 +156,7 @@ Page{
                         right: parent.right
                         margins: units.gu(0.5)
                     }
+                    color: StringFormat.getClassificationForegroundColor(index);
                 }
             }
         }
