@@ -76,10 +76,14 @@ Page {
             id: competitionClassSelect
             expanded:false
             selectedIndex: 0
-            delegate: Text {
+            delegate: OptionSelectorDelegate {
                 text: name
+                subText: description
             }
             model: uciClassModel
+            containerHeight: units.gu(20)
+            width: parent.width
+            height: units.gu(4)
         }
 
 
