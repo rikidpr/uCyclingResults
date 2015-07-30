@@ -15,9 +15,13 @@ Page {
             id: openAbout
             text: i18n.tr("About...")
             iconName: "help"
-            onTriggered: pageStack.push(Qt.resolvedUrl("ui/AboutPage.qml"))
+            onTriggered: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
         }
     ]
+
+    head.sections.model:[i18n.tr("query"), i18n.tr("last")]
+
+
 
     Column {
         spacing: units.gu(1)

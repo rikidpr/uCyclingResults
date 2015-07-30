@@ -5,12 +5,13 @@ import "../js/StringFormats.js" as StringFormat;
 
 Page{
     id: aboutPage;
-    Component {
+    title: i18n.tr("About")
+    Item {
             id: aboutSection
+            anchors.fill:parent
 
             Column {
                 anchors.fill: parent
-                width: root.width > units.gu(50) ? units.gu(50) : parent.width
 
                 ListItem.Header {
                     text: i18n.tr("Credits:")
