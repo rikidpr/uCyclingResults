@@ -1,17 +1,15 @@
 {
-    "name": "ucyclingresults.dprsoft",
+    "name": "ucyclingresults.andprsoft",
     "description": "description of uCyclingResults",
     "architecture": "all",
     "title": "uCyclingResults",
     "hooks": {
         "uCyclingResults": {
             "apparmor": "uCyclingResults.apparmor",
-            "desktop":  "uCyclingResults.desktop"
+            "desktop": "uCyclingResults.desktop"
         }
     },
     "version": "0.1",
     "maintainer": "Ricardo <andprsoft@gmail.com>",
-    "framework" : "ubuntu-sdk-15.04"
+    "framework": "ubuntu-sdk-15.04"
 }
-
-

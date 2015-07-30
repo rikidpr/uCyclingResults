@@ -1,3 +1,3 @@
 //UCyclingResults Contracts
 
-var cyclingResultsHost = "http://localhost:8282";
+var cyclingResultsHost = "http://cyclingresults-dprsoft.rhcloud.com";
