@@ -127,6 +127,14 @@ Page{
                         margins: units.gu(0.5)
                     }
                 }
+                Rectangle {
+                    anchors{
+                        left: parent.left
+                        right: parent.right
+                    }
+                    height: units.gu(3)
+                    color: SF.getListBackgroundColor(index);
+                }
                 Label {
                     id:txtName
                     text: name

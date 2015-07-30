@@ -114,6 +114,14 @@ Page{
                     right: parent.right
                 }
                 height: units.gu(3);
+                Rectangle {
+                    anchors{
+                        left: parent.left
+                        right: parent.right
+                    }
+                    height: units.gu(3)
+                    color: SF.getListBackgroundColor(index);
+                }
                 Label {
                     id:txtDate
                     text: SF.formatDate(initDate);

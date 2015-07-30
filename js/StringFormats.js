@@ -64,3 +64,11 @@ function getClassificationForegroundColor(index){
         return "black"
     }
 }
+
+function getListBackgroundColor(index){
+    if (index % 2 === 0){
+        return "#EADEE5";
+    } else {
+        return "#F1E9ED";
+    }
+}
