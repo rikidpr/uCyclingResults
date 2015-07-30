@@ -59,6 +59,30 @@ Page {
             maximum: new Date();
         }
 
+        ListModel{
+            id:uciClassModel
+            ListElement {name:"ALL"; description:"ALL"}
+            ListElement {name:"UWT"; description:"UWT"}
+            ListElement {name: "1.HC"; description:"1.HC"}
+            ListElement {name:"2.HC"; description:"2.HC"}
+            ListElement {name:"1.1"; description:"1.1"}
+            ListElement {name:"2.1"; description:"2.1"}
+            ListElement {name:"1.2"; description:"1.2"}
+            ListElement {name:"2.2"; description:"2.2"}
+            ListElement {name:"CN"; description:"CN"}
+        }
+
+        OptionSelector {
+            id: competitionClassSelect
+            expanded:false
+            selectedIndex: 0
+            delegate: Text {
+                text: name
+            }
+            model: uciClassModel
+        }
+
+
         Button {
             objectName: "button"
             width: parent.width
@@ -68,6 +92,7 @@ Page {
             onClicked: {
                 var initDate = Qt.formatDate(datePicker.date, "yyyyMM")+"01";
                 var finishDate =Qt.formatDate(datePicker.date, "yyyyMM")+"31";
+                var uciClass = uciClassModel.get(competitionClassSelect.selectedIndex).name;
                 pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
                                    {
                                            "initDate":initDate,
