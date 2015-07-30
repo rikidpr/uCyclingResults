@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.2
+import "../js/StringFormats.js" as StringFormat;
 
 Page{
     id: oneDayResultsPage;
@@ -91,13 +92,13 @@ Page{
             header: Rectangle {
                 width: parent.width;
                 height: units.gu(1)
-                color: "#555555"
+                color: "#333333"
             }
 
             footer: Rectangle {
                 width: parent.width
                 height: units.gu(1)
-                color: "#555555"
+                color: "#333333"
             }
         }
 
@@ -109,6 +110,14 @@ Page{
                     right: parent.right
                 }
                 height: units.gu(3)
+                Rectangle {
+                    anchors{
+                        left: parent.left
+                        right: parent.right
+                    }
+                    height: units.gu(3)
+                    color: StringFormat.getOneDayResultsBackgroundColor(index);
+                }
                 Label {
                     id:txtRank
                     text: rank;
@@ -120,10 +129,11 @@ Page{
                         left: parent.left
                         margins: units.gu(0.5)
                     }
+                    color: StringFormat.getOneDayResultsForegroundColor(index);
                 }
                 Label {
                     id:txtName
-                    text: name
+                    text: name+" ("+team+")"
                     fontSize: "small"
                     anchors {
                         top: parent.top
@@ -132,6 +142,7 @@ Page{
                         right: txtResult.left
                         margins: units.gu(0.5)
                     }
+                    color: StringFormat.getOneDayResultsForegroundColor(index);
                 }
                 Label {
                     id:txtResult
@@ -141,10 +152,10 @@ Page{
                     anchors {
                         top: parent.top
                         bottom: parent.bottom
-                        //left: txtName.right
                         right: parent.right
                         margins: units.gu(0.5)
                     }
+                    color: StringFormat.getOneDayResultsForegroundColor(index);
                 }
             }
         }

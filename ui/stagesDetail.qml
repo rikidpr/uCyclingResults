@@ -77,7 +77,8 @@ Page{
                                         "eventPhaseID":comp.eventPhaseID,
                                         "competitionType":comp.competitionType,
                                         "competitionID":comp.competitionID,
-                                        "winner":typeof(comp.winner) === 'undefined' ? '' : comp.winner});
+                                        "winner":typeof(comp.winner) === 'undefined' ? '' : comp.winner,
+                                        "leader":typeof(comp.leader) === 'undefined' ? '' : comp.leader});
                 }
                 stagesDetailPage.state="LOADED";
             }
@@ -140,7 +141,7 @@ Page{
                 }
                 Label {
                     id:txtWinner
-                    text: winner;
+                    text: phase1ID === 0 ? leader : winner;
                     width: units.gu(15)
                     fontSize: "x-small"
                     anchors {

@@ -47,6 +47,27 @@ Page {
         }
 
 
+        Button {
+            objectName: "button"
+            width: parent.width
+
+            text: i18n.tr("Select month competitions")
+
+            onClicked: {
+                var initDate = Qt.formatDate(datePicker.date, "yyyyMM")+"01";
+                var finishDate =Qt.formatDate(datePicker.date, "yyyyMM")+"31";
+                var uciClass = uciClassModel.get(competitionClassSelect.selectedIndex).name;
+                pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
+                                   {
+                                           "initDate":initDate,
+                                           "finishDate":finishDate,
+                                           "genderID":"1",
+                                           "classID":"1",
+                                           "classificationType":uciClass}
+                               );
+            }
+        }
+
         DatePicker {
             id:datePicker
             //width: parent.width
@@ -59,25 +80,33 @@ Page {
             maximum: new Date();
         }
 
-        Button {
-            objectName: "button"
-            width: parent.width
-
-            text: i18n.tr("Select month competitions")
-
-            onClicked: {
-                var initDate = Qt.formatDate(datePicker.date, "yyyyMM")+"01";
-                var finishDate =Qt.formatDate(datePicker.date, "yyyyMM")+"31";
-                pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
-                                   {
-                                           "initDate":initDate,
-                                           "finishDate":finishDate,
-                                           "genderID":"1",
-                                           "classID":"1",
-                                           "classificationType":"UWT"}
-                               );
-            }
+        ListModel{
+            id:uciClassModel
+            ListElement {name:"ALL"; description:"ALL"}
+            ListElement {name:"UWT"; description:"UWT"}
+            ListElement {name: "1.HC"; description:"1.HC"}
+            ListElement {name:"2.HC"; description:"2.HC"}
+            ListElement {name:"1.1"; description:"1.1"}
+            ListElement {name:"2.1"; description:"2.1"}
+            ListElement {name:"1.2"; description:"1.2"}
+            ListElement {name:"2.2"; description:"2.2"}
+            ListElement {name:"CN"; description:"CN"}
         }
+
+        OptionSelector {
+            id: competitionClassSelect
+            expanded:false
+            selectedIndex: 0
+            delegate: OptionSelectorDelegate {
+                text: name
+            }
+            model: uciClassModel
+            containerHeight: units.gu(20)
+            width: parent.width
+            height: units.gu(2)
+        }
+
+
     }
 
 
