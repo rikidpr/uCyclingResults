@@ -3,6 +3,7 @@ import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
 import QtQuick.XmlListModel 2.0
 import Ubuntu.Components.Pickers 1.0
+import Ubuntu.Layouts 0.1
 import "../js/StringFormats.js" as SF;
 
 Page {
@@ -137,13 +138,45 @@ Page {
         }
     }
 
-    Component{
-        id: lastSection
-        Layouts{
-            id:lastSectionLayouts
+    Layouts{
+            id:lastSection
             anchors.fill: parent
             layouts :[
                 ConditionalLayout {
+                  name: "portrait"
+                  when: mainPage.width <= units.gu(45)
+                  //default layout
+                  Column {
+                      id:lastPortraitLayout
+                      spacing: units.gu(1)
+                      anchors {
+                          margins: units.gu(2)
+                          fill: parent
+                      }
+                      Button {
+                          id: btnLast
+                          objectName: "button"
+                          width: parent.width
+                          height: units.gu(20)
+                          text: i18n.tr("Last month Competitions")
+                          color:SF.getPositiveButtonColor()
+
+                          onClicked: getLastMonthCompetitions();
+                      }
+                      Button {
+                          id: btnUwt
+                          objectName: "button"
+                          width: parent.width
+                          height: units.gu(20)
+                          text: i18n.tr("UCI World Tour")
+                          color:SF.getPositiveButtonColor()
+
+                          onClicked: getLastYearCompetitions();
+                      }
+                  }
+                },
+                ConditionalLayout {
+                    name: "landscape"
                     when: mainPage.width > units.gu(45)
                     Row {
                         id:lastLandscapeLayout
@@ -183,38 +216,7 @@ Page {
 
             ]
         }
-        //default layout
-        Column {
-            id:lastPortraitLayout
-            spacing: units.gu(1)
-            anchors {
-                margins: units.gu(2)
-                fill: parent
-            }
-            Button {
-                id: btnLast
-                objectName: "button"
-                width: parent.width
-                height: units.gu(20)
-                text: i18n.tr("Last month Competitions")
-                color:SF.getPositiveButtonColor()
 
-                onClicked: getLastMonthCompetitions();
-            }
-            Button {
-                id: btnUwt
-                objectName: "button"
-                width: parent.width
-                height: units.gu(20)
-                text: i18n.tr("UCI World Tour")
-                color:SF.getPositiveButtonColor()
-
-                onClicked: getLastYearCompetitions();
-            }
-        }
-
-
-    }
 
 
     /// JAVASCRIPT FUNCTIONS ///
