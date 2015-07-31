@@ -140,7 +140,33 @@ Page {
 
     Component{
         id:lastSection
+        state: "PORTRAIT"
+
+        states: [
+            State {
+                name: "PORTRAIT"
+                PropertyChanges {target: portraitLayout; opacity: 1}
+                PropertyChanges {target: landscapeLayout; opacity: 0}
+            },
+            State {
+                name: "LANDSCAPE"
+                PropertyChanges {target: portraitLayout; opacity: 0}
+                PropertyChanges {target: landscapeLayout; opacity: 1}
+            }
+
+        ]
+
+        onWidthChanged: {
+            if (mainPage.width > units.gu(45)){
+                lastSection.state= "LANDSCAPE";
+            } else {
+                lastSection.state= "PORTRAIT";
+            }
+
+        }
+
         Column {
+            id:portraitLayout
             spacing: units.gu(1)
             anchors {
                 margins: units.gu(2)
@@ -151,30 +177,10 @@ Page {
                 objectName: "button"
                 width: parent.width
                 height: units.gu(20)
-
                 text: i18n.tr("Last month Competitions")
                 color:SF.getPositiveButtonColor()
 
-                onClicked: {
-                    console.log("");
-
-                    var cTime = new Date();
-                    var year = cTime.getFullYear();
-                    var month = cTime.getMonth()+1;
-                    var date = cTime.getDate();
-                    var finishDate = ""+year+(month<10 ? "0"+month : monht)+(date<10 ? "0"+date : date);
-                    month = month -1;
-                    var initDate = ""+year+(month<10 ? "0"+month : monht)+(date<10 ? "0"+date : date);
-
-                    pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
-                                       {
-                                               "initDate":initDate,
-                                               "finishDate":finishDate,
-                                               "genderID":"1",
-                                               "classID":"1",
-                                               "classificationType":"ALL"}
-                                   );
-                }
+                onClicked: getLastMonthCompetitions();
             }
             Button {
                 id: btnUwt
@@ -184,27 +190,79 @@ Page {
                 text: i18n.tr("UCI World Tour")
                 color:SF.getPositiveButtonColor()
 
-                onClicked: {
-                    console.log("");
+                onClicked: getLastYearCompetitions();
+            }
+        }
 
-                    var cTime = new Date();
-                    var year = cTime.getFullYear();
-                    var finishDate = ""+year+"1231";
-                    var initDate = ""+year+"0101";
-
-                    pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
-                                       {
-                                               "initDate":initDate,
-                                               "finishDate":finishDate,
-                                               "genderID":"1",
-                                               "classID":"1",
-                                               "classificationType":"UWT"}
-                                   );
+        Row {
+            id:landscapeLayout
+            spacing: units.gu(1)
+            anchors {
+                margins: units.gu(2)
+                fill: parent
+            }
+            Button {
+                id: btnLastLandscape
+                objectName: "button"
+                anchors {
+                    top: parent.top
+                    left: parent.left
                 }
+                height: units.gu(20)
+                text: i18n.tr("Last month Competitions")
+                color:SF.getPositiveButtonColor()
+
+                onClicked: getLastMonthCompetitions();
+            }
+            Button {
+                id: btnUwtLandscape
+                objectName: "button"
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                }
+                height: units.gu(20)
+                text: i18n.tr("UCI World Tour")
+                color:SF.getPositiveButtonColor()
+
+                onClicked: getLastYearCompetitions();
             }
         }
     }
 
 
+    /// JAVASCRIPT FUNCTIONS ///
+    function getLastMonthCompetitions(){
+        var cTime = new Date();
+        var year = cTime.getFullYear();
+        var month = cTime.getMonth()+1;
+        var date = cTime.getDate();
+        var finishDate = ""+year+(month<10 ? "0"+month : monht)+(date<10 ? "0"+date : date);
+        month = month -1;
+        var initDate = ""+year+(month<10 ? "0"+month : monht)+(date<10 ? "0"+date : date);
+
+        pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
+                       {"initDate":initDate,
+                        "finishDate":finishDate,
+                        "genderID":"1",
+                        "classID":"1",
+                        "classificationType":"ALL"}
+                       );
+    }
+
+    function getLastYearCompetitions(){
+        var cTime = new Date();
+        var year = cTime.getFullYear();
+        var finishDate = ""+year+"1231";
+        var initDate = ""+year+"0101";
+
+        pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
+                           {"initDate":initDate,
+                           "finishDate":finishDate,
+                           "genderID":"1",
+                           "classID":"1",
+                           "classificationType":"UWT"}
+                       );
+    }
 
 }
