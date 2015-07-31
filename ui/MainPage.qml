@@ -43,6 +43,7 @@ Page {
     Component{
         id: querySection
         Column{
+            spacing: units.gu(1)
             anchors {
                 margins: units.gu(2)
                 fill: parent
