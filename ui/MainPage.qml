@@ -6,24 +6,10 @@ import Ubuntu.Components.Pickers 1.0
 import Ubuntu.Layouts 0.1
 import "../js/StringFormats.js" as SF;
 
-Page {
-    id: mainPage
-
-    title: i18n.tr("Cycling Results")
-
-    head.actions: [//15.04 en adelante
-        Action {
-            id: openAbout
-            text: i18n.tr("About...")
-            iconName: "help"
-            onTriggered: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-        }
-    ]
-
     Tabs {
         id: tabs
         Tab {
-            tittle: i18n.tr("query")
+            title: i18n.tr("query")
             page: Page{
                 Column{
                     spacing: units.gu(1)
@@ -123,6 +109,14 @@ Page {
         Tab{
             title: i18n.tr("Lasts")
             page: Page{
+                head.actions: [//15.04 en adelante
+                    Action {
+                        id: openAbout
+                        text: i18n.tr("About...")
+                        iconName: "help"
+                        onTriggered: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+                    }
+                ]
                 Layouts{
                         id:lastSection
                         anchors.fill: parent
@@ -203,7 +197,13 @@ Page {
                     }
             }
         }
-    }
+        Tab {
+            title: i18n.tr("About...")
+            page: AboutPage{ id:aboutPage }
+        }
+
+
+
 
 
 
