@@ -67,7 +67,7 @@ Page {
 
 
 
-    Component{
+    Item{
         id: querySection
         Column{
             spacing: units.gu(1)
@@ -165,9 +165,8 @@ Page {
         }
     }
 
-    Component{
-        id:lastSection
-
+    Item{
+        id: lastSection
         Column {
             id:lastPortraitLayout
             spacing: units.gu(1)
