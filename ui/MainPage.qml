@@ -39,6 +39,23 @@ Page {
         }
     }
 
+
+    state: "PORTRAIT"
+
+    states: [
+        State {
+            name: "PORTRAIT"
+            PropertyChanges {target: lastPortraitLayout; opacity: 1}
+            PropertyChanges {target: lastLandscapeLayout; opacity: 0}
+        },
+        State {
+            name: "LANDSCAPE"
+            PropertyChanges {target: lastPortraitLayout; opacity: 0}
+            PropertyChanges {target: lastLandscapeLayout; opacity: 1}
+        }
+
+    ]
+
     onWidthChanged: {
         if (mainPage.width > units.gu(45)){
             lastSection.state= "LANDSCAPE";
@@ -150,25 +167,9 @@ Page {
 
     Component{
         id:lastSection
-        state: "PORTRAIT"
-
-        states: [
-            State {
-                name: "PORTRAIT"
-                PropertyChanges {target: portraitLayout; opacity: 1}
-                PropertyChanges {target: landscapeLayout; opacity: 0}
-            },
-            State {
-                name: "LANDSCAPE"
-                PropertyChanges {target: portraitLayout; opacity: 0}
-                PropertyChanges {target: landscapeLayout; opacity: 1}
-            }
-
-        ]
-
 
         Column {
-            id:portraitLayout
+            id:lastPortraitLayout
             spacing: units.gu(1)
             anchors {
                 margins: units.gu(2)
@@ -197,7 +198,7 @@ Page {
         }
 
         Row {
-            id:landscapeLayout
+            id:lastLandscapeLayout
             spacing: units.gu(1)
             anchors {
                 margins: units.gu(2)
