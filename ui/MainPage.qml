@@ -39,6 +39,16 @@ Page {
         }
     }
 
+    onWidthChanged: {
+        if (mainPage.width > units.gu(45)){
+            lastSection.state= "LANDSCAPE";
+        } else {
+            lastSection.state= "PORTRAIT";
+        }
+
+    }
+
+
 
     Component{
         id: querySection
@@ -156,14 +166,6 @@ Page {
 
         ]
 
-        onWidthChanged: {
-            if (mainPage.width > units.gu(45)){
-                lastSection.state= "LANDSCAPE";
-            } else {
-                lastSection.state= "PORTRAIT";
-            }
-
-        }
 
         Column {
             id:portraitLayout
