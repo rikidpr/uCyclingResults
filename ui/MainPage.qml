@@ -43,7 +43,10 @@ Page {
     Component{
         id: querySection
         Column{
-            anchors.fill:parent
+            anchors {
+                margins: units.gu(2)
+                fill: parent
+            }
             Button {
                 id:btnSelectedMonth
                 objectName: "button"
