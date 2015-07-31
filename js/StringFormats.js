@@ -72,3 +72,7 @@ function getListBackgroundColor(index){
         return "#F1E9ED";
     }
 }
+
+function getPositiveButtonColor(){
+    return "#3fb24f";
+}

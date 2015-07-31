@@ -3,7 +3,7 @@ import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
 import QtQuick.XmlListModel 2.0
 import Ubuntu.Components.Pickers 1.0
-
+import "../js/StringFormats.js" as SF;
 
 Page {
     id: mainPage
@@ -45,14 +45,38 @@ Page {
         Column{
             anchors.fill:parent
             Button {
+                id:btnSelectedMonth
                 objectName: "button"
                 width: parent.width
-
+                height: units.gu(10)
                 text: i18n.tr("Select month competitions")
+                color:SF.getPositiveButtonColor()
 
                 onClicked: {
                     var initDate = Qt.formatDate(datePicker.date, "yyyyMM")+"01";
                     var finishDate =Qt.formatDate(datePicker.date, "yyyyMM")+"31";
+                    var uciClass = uciClassModel.get(competitionClassSelect.selectedIndex).name;
+                    pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
+                                       {
+                                               "initDate":initDate,
+                                               "finishDate":finishDate,
+                                               "genderID":"1",
+                                               "classID":"1",
+                                               "classificationType":uciClass}
+                                   );
+                }
+            }
+            Button {
+                id:btnSelectedYear
+                objectName: "button"
+                width: parent.width
+                height: units.gu(10)
+                text: i18n.tr("Select year competitions")
+                color:SF.getPositiveButtonColor()
+
+                onClicked: {
+                    var initDate = Qt.formatDate(datePicker.date, "yyyy")+"0101";
+                    var finishDate =Qt.formatDate(datePicker.date, "yyyy")+"1231";
                     var uciClass = uciClassModel.get(competitionClassSelect.selectedIndex).name;
                     pageStack.push(Qt.resolvedUrl("competitionsList.qml"),
                                        {
@@ -75,6 +99,10 @@ Page {
                     return d;
                 }
                 maximum: new Date();
+            }
+
+            Label{
+                text: i18n.tr("Uci Class:")
             }
 
             ListModel{
@@ -121,6 +149,7 @@ Page {
                 height: units.gu(20)
 
                 text: i18n.tr("Last month Competitions")
+                color:SF.getPositiveButtonColor()
 
                 onClicked: {
                     console.log("");
@@ -148,8 +177,8 @@ Page {
                 objectName: "button"
                 width: parent.width
                 height: units.gu(20)
-
                 text: i18n.tr("UCI World Tour")
+                color:SF.getPositiveButtonColor()
 
                 onClicked: {
                     console.log("");
