@@ -39,35 +39,7 @@ Page {
         }
     }
 
-
-    state: "PORTRAIT"
-
-    states: [
-        State {
-            name: "PORTRAIT"
-            PropertyChanges {target: lastPortraitLayout; opacity: 1}
-            PropertyChanges {target: lastLandscapeLayout; opacity: 0}
-        },
-        State {
-            name: "LANDSCAPE"
-            PropertyChanges {target: lastPortraitLayout; opacity: 0}
-            PropertyChanges {target: lastLandscapeLayout; opacity: 1}
-        }
-
-    ]
-
-    onWidthChanged: {
-        if (mainPage.width > units.gu(45)){
-            lastSection.state= "LANDSCAPE";
-        } else {
-            lastSection.state= "PORTRAIT";
-        }
-
-    }
-
-
-
-    Item{
+    Component{
         id: querySection
         Column{
             spacing: units.gu(1)
@@ -165,8 +137,53 @@ Page {
         }
     }
 
-    Item{
+    Component{
         id: lastSection
+        Layouts{
+            id:lastSectionLayouts
+            anchors.fill: parent
+            layouts :[
+                ConditionalLayout {
+                    when: mainPage.width > units.gu(45)
+                    Row {
+                        id:lastLandscapeLayout
+                        spacing: units.gu(1)
+                        anchors {
+                            margins: units.gu(2)
+                            fill: parent
+                        }
+                        Button {
+                            id: btnLastLandscape
+                            objectName: "button"
+                            anchors {
+                                top: parent.top
+                                left: parent.left
+                            }
+                            height: units.gu(20)
+                            text: i18n.tr("Last month Competitions")
+                            color:SF.getPositiveButtonColor()
+
+                            onClicked: getLastMonthCompetitions();
+                        }
+                        Button {
+                            id: btnUwtLandscape
+                            objectName: "button"
+                            anchors {
+                                top: parent.top
+                                right: parent.right
+                            }
+                            height: units.gu(20)
+                            text: i18n.tr("UCI World Tour")
+                            color:SF.getPositiveButtonColor()
+
+                            onClicked: getLastYearCompetitions();
+                        }
+                    }
+                }
+
+            ]
+        }
+        //default layout
         Column {
             id:lastPortraitLayout
             spacing: units.gu(1)
@@ -196,40 +213,7 @@ Page {
             }
         }
 
-        Row {
-            id:lastLandscapeLayout
-            spacing: units.gu(1)
-            anchors {
-                margins: units.gu(2)
-                fill: parent
-            }
-            Button {
-                id: btnLastLandscape
-                objectName: "button"
-                anchors {
-                    top: parent.top
-                    left: parent.left
-                }
-                height: units.gu(20)
-                text: i18n.tr("Last month Competitions")
-                color:SF.getPositiveButtonColor()
 
-                onClicked: getLastMonthCompetitions();
-            }
-            Button {
-                id: btnUwtLandscape
-                objectName: "button"
-                anchors {
-                    top: parent.top
-                    right: parent.right
-                }
-                height: units.gu(20)
-                text: i18n.tr("UCI World Tour")
-                color:SF.getPositiveButtonColor()
-
-                onClicked: getLastYearCompetitions();
-            }
-        }
     }
 
 
