@@ -132,7 +132,7 @@ Page{
                 Label {
                     id:txtName
                     text: {
-                        if (typeof(team) === 'undefinded'){
+                        if (typeof(team) === 'undefined'){
                             return name;
                         } else {
                             return name+"("+team+")";
