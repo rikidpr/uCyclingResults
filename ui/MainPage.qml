@@ -11,6 +11,7 @@ import "../js/StringFormats.js" as SF;
         Tab {
             title: i18n.tr("query")
             page: Page{
+
                 Column{
                     spacing: units.gu(1)
                     anchors {
@@ -157,8 +158,10 @@ import "../js/StringFormats.js" as SF;
                             ConditionalLayout {
                                 name: "landscape"
                                 when: mainPage.width > units.gu(45)
-                                Row {
+                                Grid {
                                     id:lastLandscapeLayout
+                                    columns:2
+                                    rows:1
                                     spacing: units.gu(1)
                                     anchors {
                                         margins: units.gu(2)
@@ -167,11 +170,8 @@ import "../js/StringFormats.js" as SF;
                                     Button {
                                         id: btnLastLandscape
                                         objectName: "button"
-                                        anchors {
-                                            top: parent.top
-                                            left: parent.left
-                                        }
-                                        height: units.gu(20)
+                                        height: units.gu(30)
+                                        width: (mainPage.width/2)-units.gu(2)
                                         text: i18n.tr("Last month Competitions")
                                         color:SF.getPositiveButtonColor()
 
@@ -180,11 +180,8 @@ import "../js/StringFormats.js" as SF;
                                     Button {
                                         id: btnUwtLandscape
                                         objectName: "button"
-                                        anchors {
-                                            top: parent.top
-                                            right: parent.right
-                                        }
-                                        height: units.gu(20)
+                                        height: units.gu(30)
+                                        width: (mainPage.width/2)-units.gu(2)
                                         text: i18n.tr("UCI World Tour")
                                         color:SF.getPositiveButtonColor()
 
