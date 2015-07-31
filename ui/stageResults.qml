@@ -131,7 +131,13 @@ Page{
                 }
                 Label {
                     id:txtName
-                    text: name+" ("+team+")"
+                    text: {
+                        if (typeof(team) === 'undefinded'){
+                            return name;
+                        } else {
+                            return name+"("+team+")";
+                        }
+                    }
                     fontSize: "small"
                     anchors {
                         top: parent.top
