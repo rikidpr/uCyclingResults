@@ -8,6 +8,93 @@ import "../js/StringFormats.js" as SF;
 
     Tabs {
         id: tabs
+        Tab{
+            title: i18n.tr("Lasts Competitions")
+            page: Page{
+                head.actions: [//15.04 en adelante
+                    Action {
+                        id: openAbout
+                        text: i18n.tr("About...")
+                        iconName: "help"
+                        onTriggered: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+                    }
+                ]
+                Layouts{
+                        id:lastSection
+                        anchors.fill: parent
+                        layouts :[
+                            ConditionalLayout {
+                              name: "portrait"
+                              when: mainPage.width <= units.gu(45)
+                              //default layout
+                              Column {
+                                  id:lastPortraitLayout
+                                  spacing: units.gu(1)
+                                  anchors {
+                                      margins: units.gu(2)
+                                      fill: parent
+                                  }
+                                  Button {
+                                      id: btnLast
+                                      objectName: "button"
+                                      width: parent.width
+                                      height: units.gu(20)
+                                      text: i18n.tr("Last month Competitions")
+                                      color:SF.getPositiveButtonColor()
+
+                                      onClicked: getLastMonthCompetitions();
+                                  }
+                                  Button {
+                                      id: btnUwt
+                                      objectName: "button"
+                                      width: parent.width
+                                      height: units.gu(20)
+                                      text: i18n.tr("UCI World Tour")
+                                      color:SF.getPositiveButtonColor()
+
+                                      onClicked: getLastYearCompetitions();
+                                  }
+                              }
+                            },
+                            ConditionalLayout {
+                                name: "landscape"
+                                when: mainPage.width > units.gu(45)
+                                Grid {
+                                    id:lastLandscapeLayout
+                                    columns:2
+                                    rows:1
+                                    spacing: units.gu(1)
+                                    anchors {
+                                        margins: units.gu(2)
+                                        fill: parent
+                                    }
+                                    Button {
+                                        id: btnLastLandscape
+                                        objectName: "button"
+                                        height: units.gu(25)
+                                        width: (mainPage.width/2)-units.gu(2)
+                                        text: i18n.tr("Last month Competitions")
+                                        color:SF.getPositiveButtonColor()
+
+                                        onClicked: getLastMonthCompetitions();
+                                    }
+                                    Button {
+                                        id: btnUwtLandscape
+                                        objectName: "button"
+                                        height: units.gu(25)
+                                        width: (mainPage.width/2)-units.gu(2)
+                                        text: i18n.tr("UCI World Tour")
+                                        color:SF.getPositiveButtonColor()
+
+                                        onClicked: getLastYearCompetitions();
+                                    }
+                                }
+                            }
+
+                        ]
+                    }
+            }
+        }
         Tab {
             title: i18n.tr("query")
             page: Page{
@@ -105,93 +192,6 @@ import "../js/StringFormats.js" as SF;
                         height: units.gu(2)
                     }
                 }
-            }
-        }
-        Tab{
-            title: i18n.tr("Lasts")
-            page: Page{
-                head.actions: [//15.04 en adelante
-                    Action {
-                        id: openAbout
-                        text: i18n.tr("About...")
-                        iconName: "help"
-                        onTriggered: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-                    }
-                ]
-                Layouts{
-                        id:lastSection
-                        anchors.fill: parent
-                        layouts :[
-                            ConditionalLayout {
-                              name: "portrait"
-                              when: mainPage.width <= units.gu(45)
-                              //default layout
-                              Column {
-                                  id:lastPortraitLayout
-                                  spacing: units.gu(1)
-                                  anchors {
-                                      margins: units.gu(2)
-                                      fill: parent
-                                  }
-                                  Button {
-                                      id: btnLast
-                                      objectName: "button"
-                                      width: parent.width
-                                      height: units.gu(20)
-                                      text: i18n.tr("Last month Competitions")
-                                      color:SF.getPositiveButtonColor()
-
-                                      onClicked: getLastMonthCompetitions();
-                                  }
-                                  Button {
-                                      id: btnUwt
-                                      objectName: "button"
-                                      width: parent.width
-                                      height: units.gu(20)
-                                      text: i18n.tr("UCI World Tour")
-                                      color:SF.getPositiveButtonColor()
-
-                                      onClicked: getLastYearCompetitions();
-                                  }
-                              }
-                            },
-                            ConditionalLayout {
-                                name: "landscape"
-                                when: mainPage.width > units.gu(45)
-                                Grid {
-                                    id:lastLandscapeLayout
-                                    columns:2
-                                    rows:1
-                                    spacing: units.gu(1)
-                                    anchors {
-                                        margins: units.gu(2)
-                                        fill: parent
-                                    }
-                                    Button {
-                                        id: btnLastLandscape
-                                        objectName: "button"
-                                        height: units.gu(30)
-                                        width: (mainPage.width/2)-units.gu(2)
-                                        text: i18n.tr("Last month Competitions")
-                                        color:SF.getPositiveButtonColor()
-
-                                        onClicked: getLastMonthCompetitions();
-                                    }
-                                    Button {
-                                        id: btnUwtLandscape
-                                        objectName: "button"
-                                        height: units.gu(30)
-                                        width: (mainPage.width/2)-units.gu(2)
-                                        text: i18n.tr("UCI World Tour")
-                                        color:SF.getPositiveButtonColor()
-
-                                        onClicked: getLastYearCompetitions();
-                                    }
-                                }
-                            }
-
-                        ]
-                    }
             }
         }
         Tab {
