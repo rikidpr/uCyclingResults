@@ -6,7 +6,7 @@ WorkerScript.onMessage = function(sentMessage) {
     //segun lo que llegue en el mensaje de fecha, genero, clase... una url u otra, de momento a piñon pa pruebas
     //sentMessage.genderID, setnMessage.classID...
     var baseUrl = cyclingResultsHost+"/rest/competitions/query/";
-    var url = baseUrl+sentMessage.initDate+","+sentMessage.finishDate+","+
+    var url = baseUrl+sentMessage.initDate+","+sentMessage.finishDate+","+sentMessage.sportID+","+
             sentMessage.genderID+","+sentMessage.classID+","+sentMessage.classificationType;
     console.log(url);
     xmlHttp.open("GET", url, true);

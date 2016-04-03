@@ -7,6 +7,7 @@ Page{
     title: i18n.tr("Competitions List")
     property string initDate;
     property string finishDate
+    property string sportID;
     property string genderID;
     property string classID;
     property string classificationType;
@@ -58,6 +59,7 @@ Page{
                                         "initDate":comp.initDate,
                                         "finishDate":comp.finishDate,
                                         "editionID":comp.editionID,
+                                        "sportID":comp.sportID,
                                         "genderID":comp.genderID,
                                         "classID":comp.classID,
                                         "phase1ID":comp.phase1ID,
@@ -78,6 +80,7 @@ Page{
                 "initDate":initDate,
                 "finishDate":finishDate,
                 "genderID":genderID,
+                "sportID":sportID,
                 "classID":classID,
                 "classificationType":classificationType})
         }

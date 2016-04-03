@@ -133,7 +133,12 @@ Page{
                 }
                 Label {
                     id:txtName
-                    text: name+" ("+team+")"
+                    text: {
+                        if (typeof team != "undefined")
+                            name+" ("+team+")"
+                        else
+                            name
+                    }
                     fontSize: "small"
                     anchors {
                         top: parent.top
